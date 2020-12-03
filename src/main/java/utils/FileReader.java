@@ -1,6 +1,7 @@
 package utils;
 
 import java.io.*;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
@@ -14,7 +15,8 @@ public class FileReader {
     List<WorkLog> provideWorkLogList() {
         List<WorkLog> workLogs = new ArrayList<>();
         try {
-            Reader reader = Files.newBufferedReader(Paths.get("src/main/resources/worklogs_Java.txt"));
+            URL res = getClass().getClassLoader().getResource("worklogs_Java.txt");
+            Reader reader = Files.newBufferedReader(Paths.get(res.toURI()));
             workLogs = new Gson().fromJson(reader, new TypeToken<List<WorkLog>>(){}.getType());
             reader.close();
         } catch (Exception ex) {
@@ -26,7 +28,8 @@ public class FileReader {
     List<Task> provideTaskList() {
         List<Task> tasks = new ArrayList<>();
         try {
-            Reader reader = Files.newBufferedReader(Paths.get("src/main/resources/tasks_java.txt"));
+            URL res = getClass().getClassLoader().getResource("tasks_java.txt");
+            Reader reader = Files.newBufferedReader(Paths.get(res.toURI()));
             tasks = new Gson().fromJson(reader, new TypeToken<List<Task>>(){}.getType());
             reader.close();
         } catch (Exception ex) {
