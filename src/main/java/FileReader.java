@@ -1,5 +1,3 @@
-package utils;
-
 import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
@@ -12,7 +10,7 @@ import model.WorkLog;
 
 public class FileReader {
 
-    List<WorkLog> provideWorkLogList() {
+    List<WorkLog> provideLogList() {
         List<WorkLog> workLogs = new ArrayList<>();
         try {
             URL res = getClass().getClassLoader().getResource("worklogs_Java.txt");

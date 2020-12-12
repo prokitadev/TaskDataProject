@@ -5,12 +5,17 @@ import java.util.List;
 
 public class Task {
 
-    Long id; //id of task
-    String project; //project key
-    String category; //task category
-    Long parent; // id of parent task if parent > -1
+    private Long id; //id of task
+    private String project; //project key
+    private String category; //task category
+    private Long parent; // id of parent task if parent > -1
 
-    List<Task> childrenTasks = new ArrayList<>();
+    public Task(Long id, String project, String category, Long parent) {
+        this.id = id;
+        this.project = project;
+        this.category = category;
+        this.parent = parent;
+    }
 
     public enum TaskCategory {
         EPIC, STORY, TASK, SUBTASK;
@@ -66,11 +71,24 @@ public class Task {
         this.category = category;
     }
 
-    public List<Task> getChildrenTasks() {
-        return childrenTasks;
+    @Override
+    public int hashCode() {
+        return id.hashCode();
     }
 
-    public void setChildrenTasks(List<Task> childTasks) {
-        this.childrenTasks = childTasks;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj instanceof Task) {
+            Task o = (Task) obj;
+            return id.equals(o.getId());
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{id=" + id + ",project=" + project + ",category="
+                + category + ",parent=" + parent + "}";
     }
 }

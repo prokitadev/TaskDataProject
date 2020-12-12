@@ -2,12 +2,10 @@ package model;
 
 public class WorkLog {
 
-    String author; //author
-    Long timeLogged; //time spent on
-    Long date; //the number of milliseconds since January 1, 1970, 00:00:00 GMT represented by this date.
-    Long taskID; //id of task where time is logged
-
-    Task task;
+    private String author; //author
+    private Long timeLogged; //time spent on
+    private Long date; //the number of milliseconds since January 1, 1970, 00:00:00 GMT represented by this date.
+    private Long taskID; //id of task where time is logged
 
     public String getAuthor() {
         return author;
@@ -41,11 +39,9 @@ public class WorkLog {
         this.taskID = taskID;
     }
 
-    public Task getTask() {
-        return task;
-    }
-
-    public void setTask(Task task) {
-        this.task = task;
+    @Override
+    public String toString() {
+        return "WorkLog{author=" + author + ",timeLogged=" + timeLogged
+                + ",date=" + date + ",taskID=" + taskID + "}";
     }
 }
